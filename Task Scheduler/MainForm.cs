@@ -33,11 +33,27 @@ namespace sdv
         /// </summary>
         private void setupComponent()
         {
-            foreach (TabPage page in tabControlTask.TabPages)
-            {
-                page.Enabled = false;
-                Debug.WriteLine("Disabling " + page);
-            }
+            // Disable selecting tab from user
+            tabControlTask.Selecting += (s, e) => {
+                e.Cancel = true;
+            };
+            
+
+        }
+
+        private void buttonCenter_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void buttonLeft_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRight_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

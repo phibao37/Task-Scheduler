@@ -32,19 +32,17 @@
             System.Windows.Forms.TabPage tabPage2;
             System.Windows.Forms.Panel panel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonRight = new System.Windows.Forms.Button();
+            this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonCenter = new System.Windows.Forms.Button();
             this.tabControlTask = new System.Windows.Forms.TabControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             tabPage1 = new System.Windows.Forms.TabPage();
             tabPage2 = new System.Windows.Forms.TabPage();
             panel1 = new System.Windows.Forms.Panel();
             panel1.SuspendLayout();
             this.tabControlTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,8 +68,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(this.button2);
-            panel1.Controls.Add(this.button1);
+            panel1.Controls.Add(this.buttonRight);
+            panel1.Controls.Add(this.buttonLeft);
             panel1.Controls.Add(this.buttonCenter);
             panel1.Dock = System.Windows.Forms.DockStyle.Top;
             panel1.Location = new System.Drawing.Point(5, 222);
@@ -79,30 +77,32 @@
             panel1.Size = new System.Drawing.Size(562, 37);
             panel1.TabIndex = 1;
             // 
-            // button2
+            // buttonRight
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackColor = System.Drawing.Color.IndianRed;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button2.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button2.Location = new System.Drawing.Point(358, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 31);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Hủy bỏ";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonRight.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRight.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonRight.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.buttonRight.Location = new System.Drawing.Point(358, 3);
+            this.buttonRight.Name = "buttonRight";
+            this.buttonRight.Size = new System.Drawing.Size(102, 31);
+            this.buttonRight.TabIndex = 0;
+            this.buttonRight.Text = "Hủy bỏ";
+            this.buttonRight.UseVisualStyleBackColor = false;
+            this.buttonRight.Click += new System.EventHandler(this.buttonRight_Click);
             // 
-            // button1
+            // buttonLeft
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.Location = new System.Drawing.Point(98, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 31);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Trước đó";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonLeft.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonLeft.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.buttonLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonLeft.Location = new System.Drawing.Point(98, 3);
+            this.buttonLeft.Name = "buttonLeft";
+            this.buttonLeft.Size = new System.Drawing.Size(102, 31);
+            this.buttonLeft.TabIndex = 0;
+            this.buttonLeft.Text = "Trước đó";
+            this.buttonLeft.UseVisualStyleBackColor = false;
+            this.buttonLeft.Click += new System.EventHandler(this.buttonLeft_Click);
             // 
             // buttonCenter
             // 
@@ -116,6 +116,7 @@
             this.buttonCenter.TabIndex = 0;
             this.buttonCenter.Text = "Tạo mới";
             this.buttonCenter.UseVisualStyleBackColor = false;
+            this.buttonCenter.Click += new System.EventHandler(this.buttonCenter_Click);
             // 
             // tabControlTask
             // 
@@ -135,24 +136,12 @@
             this.splitContainer1.Location = new System.Drawing.Point(5, 259);
             this.splitContainer1.Name = "splitContainer1";
             // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.monthCalendar1);
-            // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.splitContainer1.Size = new System.Drawing.Size(562, 233);
             this.splitContainer1.SplitterDistance = 372;
             this.splitContainer1.TabIndex = 2;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(2, 1);
-            this.monthCalendar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.monthCalendar1.Location = new System.Drawing.Point(0, 0);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -169,7 +158,6 @@
             this.Text = "Task Scheduler";
             panel1.ResumeLayout(false);
             this.tabControlTask.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -180,10 +168,9 @@
 
         private System.Windows.Forms.TabControl tabControlTask;
         private System.Windows.Forms.Button buttonCenter;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonLeft;
+        private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }
 
