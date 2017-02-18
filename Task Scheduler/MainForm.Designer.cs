@@ -28,22 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TabPage tabPage1;
             System.Windows.Forms.TabPage tabPage2;
             System.Windows.Forms.Panel panel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.ToolStripMenuItem trayItemExit;
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonCenter = new System.Windows.Forms.Button();
             this.tabControlTask = new System.Windows.Forms.TabControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.mainTrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.trayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.trayItemOpenApp = new System.Windows.Forms.ToolStripMenuItem();
             tabPage1 = new System.Windows.Forms.TabPage();
             tabPage2 = new System.Windows.Forms.TabPage();
             panel1 = new System.Windows.Forms.Panel();
+            trayItemExit = new System.Windows.Forms.ToolStripMenuItem();
             panel1.SuspendLayout();
             this.tabControlTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
+            this.trayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage1
@@ -143,6 +150,38 @@
             this.splitContainer1.SplitterDistance = 372;
             this.splitContainer1.TabIndex = 2;
             // 
+            // mainTrayIcon
+            // 
+            this.mainTrayIcon.ContextMenuStrip = this.trayMenu;
+            this.mainTrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("mainTrayIcon.Icon")));
+            this.mainTrayIcon.Text = "Task Scheduler";
+            this.mainTrayIcon.Visible = true;
+            this.mainTrayIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainTrayIcon_Click);
+            // 
+            // trayMenu
+            // 
+            this.trayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trayItemOpenApp,
+            trayItemExit});
+            this.trayMenu.Name = "trayMenu";
+            this.trayMenu.Size = new System.Drawing.Size(153, 70);
+            // 
+            // trayItemOpenApp
+            // 
+            this.trayItemOpenApp.CheckOnClick = true;
+            this.trayItemOpenApp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.trayItemOpenApp.Name = "trayItemOpenApp";
+            this.trayItemOpenApp.Size = new System.Drawing.Size(152, 22);
+            this.trayItemOpenApp.Text = "Mở ứng dụng";
+            this.trayItemOpenApp.Click += new System.EventHandler(this.trayItemOpenApp_Click);
+            // 
+            // trayItemExit
+            // 
+            trayItemExit.Name = "trayItemExit";
+            trayItemExit.Size = new System.Drawing.Size(152, 22);
+            trayItemExit.Text = "Thoát";
+            trayItemExit.Click += new System.EventHandler(this.trayItemExit_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,10 +195,13 @@
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Task Scheduler";
+            this.VisibleChanged += new System.EventHandler(this.form_VisibleCanged);
+            this.Resize += new System.EventHandler(this.form_Resize);
             panel1.ResumeLayout(false);
             this.tabControlTask.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.trayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -171,6 +213,9 @@
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.NotifyIcon mainTrayIcon;
+        private System.Windows.Forms.ContextMenuStrip trayMenu;
+        private System.Windows.Forms.ToolStripMenuItem trayItemOpenApp;
     }
 }
 
