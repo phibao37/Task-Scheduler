@@ -37,8 +37,8 @@ namespace sdv
             tabControlTask.Selecting += (s, e) => {
                 e.Cancel = true;
             };
-            
 
+            MainForm_ResizeEnd(null, null);
         }
 
         private void buttonCenter_Click(object sender, EventArgs e)
@@ -101,6 +101,12 @@ namespace sdv
         {
             // Close the app
             this.Close();
+        }
+
+        private void MainForm_ResizeEnd(object sender, EventArgs e)
+        {
+            listTaskView.Columns[0].Width = listTaskView.ClientSize.Width
+                - listTaskView.Columns[1].Width;
         }
     }
 }

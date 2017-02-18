@@ -32,11 +32,17 @@
             System.Windows.Forms.TabPage tabPage1;
             System.Windows.Forms.TabPage tabPage2;
             System.Windows.Forms.Panel panel1;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.ToolStripMenuItem trayItemExit;
+            System.Windows.Forms.TabControl tabListView;
+            System.Windows.Forms.TabPage tabPageListView;
+            System.Windows.Forms.ColumnHeader columnTaskName;
+            System.Windows.Forms.ColumnHeader columnFireTime;
+            System.Windows.Forms.TabPage tabPageMonthView;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonCenter = new System.Windows.Forms.Button();
+            this.listTaskView = new System.Windows.Forms.ListView();
             this.tabControlTask = new System.Windows.Forms.TabControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.mainTrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
@@ -46,9 +52,17 @@
             tabPage2 = new System.Windows.Forms.TabPage();
             panel1 = new System.Windows.Forms.Panel();
             trayItemExit = new System.Windows.Forms.ToolStripMenuItem();
+            tabListView = new System.Windows.Forms.TabControl();
+            tabPageListView = new System.Windows.Forms.TabPage();
+            columnTaskName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            columnFireTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            tabPageMonthView = new System.Windows.Forms.TabPage();
             panel1.SuspendLayout();
+            tabListView.SuspendLayout();
+            tabPageListView.SuspendLayout();
             this.tabControlTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.trayMenu.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +72,7 @@
             tabPage1.Location = new System.Drawing.Point(4, 22);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(554, 191);
+            tabPage1.Size = new System.Drawing.Size(554, 133);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Cơ bản";
             tabPage1.UseVisualStyleBackColor = true;
@@ -68,7 +82,7 @@
             tabPage2.Location = new System.Drawing.Point(4, 22);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            tabPage2.Size = new System.Drawing.Size(554, 191);
+            tabPage2.Size = new System.Drawing.Size(554, 133);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Thời gian";
             tabPage2.UseVisualStyleBackColor = true;
@@ -79,7 +93,7 @@
             panel1.Controls.Add(this.buttonLeft);
             panel1.Controls.Add(this.buttonCenter);
             panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(5, 222);
+            panel1.Location = new System.Drawing.Point(5, 164);
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(562, 37);
             panel1.TabIndex = 1;
@@ -125,6 +139,66 @@
             this.buttonCenter.UseVisualStyleBackColor = false;
             this.buttonCenter.Click += new System.EventHandler(this.buttonCenter_Click);
             // 
+            // trayItemExit
+            // 
+            trayItemExit.Name = "trayItemExit";
+            trayItemExit.Size = new System.Drawing.Size(149, 22);
+            trayItemExit.Text = "Thoát";
+            trayItemExit.Click += new System.EventHandler(this.trayItemExit_Click);
+            // 
+            // tabListView
+            // 
+            tabListView.Controls.Add(tabPageListView);
+            tabListView.Controls.Add(tabPageMonthView);
+            tabListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabListView.Location = new System.Drawing.Point(0, 0);
+            tabListView.Name = "tabListView";
+            tabListView.SelectedIndex = 0;
+            tabListView.Size = new System.Drawing.Size(372, 291);
+            tabListView.TabIndex = 0;
+            // 
+            // tabPageListView
+            // 
+            tabPageListView.Controls.Add(this.listTaskView);
+            tabPageListView.Location = new System.Drawing.Point(4, 22);
+            tabPageListView.Name = "tabPageListView";
+            tabPageListView.Size = new System.Drawing.Size(364, 265);
+            tabPageListView.TabIndex = 0;
+            tabPageListView.Text = "Danh sách";
+            tabPageListView.UseVisualStyleBackColor = true;
+            // 
+            // listTaskView
+            // 
+            this.listTaskView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            columnTaskName,
+            columnFireTime});
+            this.listTaskView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listTaskView.Location = new System.Drawing.Point(0, 0);
+            this.listTaskView.Margin = new System.Windows.Forms.Padding(0);
+            this.listTaskView.Name = "listTaskView";
+            this.listTaskView.Size = new System.Drawing.Size(364, 265);
+            this.listTaskView.TabIndex = 0;
+            this.listTaskView.UseCompatibleStateImageBehavior = false;
+            this.listTaskView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnTaskName
+            // 
+            columnTaskName.Text = "Công việc";
+            // 
+            // columnFireTime
+            // 
+            columnFireTime.Text = "Thời gian";
+            // 
+            // tabPageMonthView
+            // 
+            tabPageMonthView.Location = new System.Drawing.Point(4, 22);
+            tabPageMonthView.Name = "tabPageMonthView";
+            tabPageMonthView.Padding = new System.Windows.Forms.Padding(3);
+            tabPageMonthView.Size = new System.Drawing.Size(364, 265);
+            tabPageMonthView.TabIndex = 1;
+            tabPageMonthView.Text = "Lịch tháng";
+            tabPageMonthView.UseVisualStyleBackColor = true;
+            // 
             // tabControlTask
             // 
             this.tabControlTask.Controls.Add(tabPage1);
@@ -133,20 +207,24 @@
             this.tabControlTask.Location = new System.Drawing.Point(5, 5);
             this.tabControlTask.Name = "tabControlTask";
             this.tabControlTask.SelectedIndex = 0;
-            this.tabControlTask.Size = new System.Drawing.Size(562, 217);
+            this.tabControlTask.Size = new System.Drawing.Size(562, 159);
             this.tabControlTask.TabIndex = 0;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(5, 259);
+            this.splitContainer1.Location = new System.Drawing.Point(5, 201);
             this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(tabListView);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.splitContainer1.Size = new System.Drawing.Size(562, 233);
+            this.splitContainer1.Size = new System.Drawing.Size(562, 291);
             this.splitContainer1.SplitterDistance = 372;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -164,23 +242,16 @@
             this.trayItemOpenApp,
             trayItemExit});
             this.trayMenu.Name = "trayMenu";
-            this.trayMenu.Size = new System.Drawing.Size(153, 70);
+            this.trayMenu.Size = new System.Drawing.Size(150, 48);
             // 
             // trayItemOpenApp
             // 
             this.trayItemOpenApp.CheckOnClick = true;
             this.trayItemOpenApp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.trayItemOpenApp.Name = "trayItemOpenApp";
-            this.trayItemOpenApp.Size = new System.Drawing.Size(152, 22);
+            this.trayItemOpenApp.Size = new System.Drawing.Size(149, 22);
             this.trayItemOpenApp.Text = "Mở ứng dụng";
             this.trayItemOpenApp.Click += new System.EventHandler(this.trayItemOpenApp_Click);
-            // 
-            // trayItemExit
-            // 
-            trayItemExit.Name = "trayItemExit";
-            trayItemExit.Size = new System.Drawing.Size(152, 22);
-            trayItemExit.Text = "Thoát";
-            trayItemExit.Click += new System.EventHandler(this.trayItemExit_Click);
             // 
             // MainForm
             // 
@@ -195,10 +266,14 @@
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Task Scheduler";
+            this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
             this.VisibleChanged += new System.EventHandler(this.form_VisibleCanged);
             this.Resize += new System.EventHandler(this.form_Resize);
             panel1.ResumeLayout(false);
+            tabListView.ResumeLayout(false);
+            tabPageListView.ResumeLayout(false);
             this.tabControlTask.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.trayMenu.ResumeLayout(false);
@@ -216,6 +291,7 @@
         private System.Windows.Forms.NotifyIcon mainTrayIcon;
         private System.Windows.Forms.ContextMenuStrip trayMenu;
         private System.Windows.Forms.ToolStripMenuItem trayItemOpenApp;
+        private System.Windows.Forms.ListView listTaskView;
     }
 }
 
