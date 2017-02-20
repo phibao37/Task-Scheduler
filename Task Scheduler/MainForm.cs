@@ -38,7 +38,10 @@ namespace sdv
                 e.Cancel = true;
             };
 
+            // Resize task list column
             MainForm_ResizeEnd(null, null);
+
+            this.ActiveControl = entryTaskName;
         }
 
         private void buttonCenter_Click(object sender, EventArgs e)

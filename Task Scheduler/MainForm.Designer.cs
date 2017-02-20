@@ -39,6 +39,8 @@
             System.Windows.Forms.ColumnHeader columnFireTime;
             System.Windows.Forms.TabPage tabPageMonthView;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label label2;
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonCenter = new System.Windows.Forms.Button();
@@ -48,6 +50,8 @@
             this.mainTrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.trayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.trayItemOpenApp = new System.Windows.Forms.ToolStripMenuItem();
+            this.entryTaskName = new System.Windows.Forms.TextBox();
+            this.entryTaskDetails = new System.Windows.Forms.TextBox();
             tabPage1 = new System.Windows.Forms.TabPage();
             tabPage2 = new System.Windows.Forms.TabPage();
             panel1 = new System.Windows.Forms.Panel();
@@ -57,6 +61,9 @@
             columnTaskName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             columnFireTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tabPageMonthView = new System.Windows.Forms.TabPage();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            tabPage1.SuspendLayout();
             panel1.SuspendLayout();
             tabListView.SuspendLayout();
             tabPageListView.SuspendLayout();
@@ -69,13 +76,17 @@
             // 
             // tabPage1
             // 
+            tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            tabPage1.Controls.Add(this.entryTaskDetails);
+            tabPage1.Controls.Add(this.entryTaskName);
+            tabPage1.Controls.Add(label2);
+            tabPage1.Controls.Add(label1);
             tabPage1.Location = new System.Drawing.Point(4, 22);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
             tabPage1.Size = new System.Drawing.Size(554, 133);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Cơ bản";
-            tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -110,6 +121,7 @@
             this.buttonRight.TabIndex = 0;
             this.buttonRight.Text = "Hủy bỏ";
             this.buttonRight.UseVisualStyleBackColor = false;
+            this.buttonRight.Visible = false;
             this.buttonRight.Click += new System.EventHandler(this.buttonRight_Click);
             // 
             // buttonLeft
@@ -123,6 +135,7 @@
             this.buttonLeft.TabIndex = 0;
             this.buttonLeft.Text = "Trước đó";
             this.buttonLeft.UseVisualStyleBackColor = false;
+            this.buttonLeft.Visible = false;
             this.buttonLeft.Click += new System.EventHandler(this.buttonLeft_Click);
             // 
             // buttonCenter
@@ -253,6 +266,43 @@
             this.trayItemOpenApp.Text = "Mở ứng dụng";
             this.trayItemOpenApp.Click += new System.EventHandler(this.trayItemOpenApp_Click);
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(12, 10);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(76, 13);
+            label1.TabIndex = 0;
+            label1.Text = "Tên công việc";
+            // 
+            // entryTaskName
+            // 
+            this.entryTaskName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.entryTaskName.Location = new System.Drawing.Point(15, 27);
+            this.entryTaskName.Name = "entryTaskName";
+            this.entryTaskName.Size = new System.Drawing.Size(523, 20);
+            this.entryTaskName.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(12, 60);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(84, 13);
+            label2.TabIndex = 0;
+            label2.Text = "Mô tả công việc";
+            // 
+            // entryTaskDetails
+            // 
+            this.entryTaskDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.entryTaskDetails.Location = new System.Drawing.Point(15, 77);
+            this.entryTaskDetails.Multiline = true;
+            this.entryTaskDetails.Name = "entryTaskDetails";
+            this.entryTaskDetails.Size = new System.Drawing.Size(523, 50);
+            this.entryTaskDetails.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +319,8 @@
             this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
             this.VisibleChanged += new System.EventHandler(this.form_VisibleCanged);
             this.Resize += new System.EventHandler(this.form_Resize);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             panel1.ResumeLayout(false);
             tabListView.ResumeLayout(false);
             tabPageListView.ResumeLayout(false);
@@ -292,6 +344,8 @@
         private System.Windows.Forms.ContextMenuStrip trayMenu;
         private System.Windows.Forms.ToolStripMenuItem trayItemOpenApp;
         private System.Windows.Forms.ListView listTaskView;
+        private System.Windows.Forms.TextBox entryTaskName;
+        private System.Windows.Forms.TextBox entryTaskDetails;
     }
 }
 
